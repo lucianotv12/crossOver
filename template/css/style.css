@@ -1,0 +1,253 @@
+/******* GENERAL *******/
+html {
+	background-color: #FFFFFF;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #555555;
+	font-size: 12px;
+}
+
+body {
+	min-height: 100%;
+	margin: 0 0 0 0;
+	padding: 0 0px 100px 0;
+	background-color: #FFFFFF;
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+}
+form{
+	padding: 0;
+	margin: 0;
+}
+a,a:visited {
+	color: #333333; border: none;
+}
+input,select {
+	font-family: Arial, Helvetica, sans-serif; font-size: 13px; 
+	color: #555;
+	border:1px solid #00f	
+	
+}
+input,select {
+	font-family: Arial, Helvetica, sans-serif; font-size: 13px; 
+	color: #555;
+	border:1px solid #00f	
+	
+}
+
+botonn{
+color:red;
+border: 0px ;
+background-color: #FFFFFF;
+}
+.submit input{
+
+
+}
+
+.contentArea {
+	padding: 0; margin: 0; width: 100%;
+}
+.contentBody {
+	background-color: White; padding: 20px; display: block;
+}
+/* /// HEADER /// */
+.logo {
+	padding: 5px 0px 15px;
+}
+.header {
+	background-color: White; padding: 5px 20px 0px; display: block;
+}
+/* /// MENU /// */
+.tabMenu {
+	border: 0px; height: 28px;
+}
+.tabLeft {
+	width: 11px; white-space: nowrap;
+	background: #ECECEC url(../img/tab_left.jpg) left top no-repeat;
+	
+}
+.tabRight {
+	width: 11px; white-space: nowrap;
+	background: #ECECEC url(../img/tab_right.jpg) left top no-repeat;
+}
+.tabCenter {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	text-align: center;
+	vertical-align: middle;
+	background: #FFFFFF url(../img/tab_center.jpg) left top repeat-x;
+	white-space: nowrap;
+}
+.tabCenter a {
+	text-decoration: none;
+}
+.tabCenter a:hover {
+	color: #FFFFFF;
+}
+/* /// PAGE OPTIONS /// */
+.pageOption {
+	width: 100%;
+	padding: 5px 25px 5px;
+	background-color: #F5F5F5;
+	border-top: 1px #CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.pageOption a {
+	text-decoration: none;
+	color: #333333;
+	padding-right: 10px;
+}
+.pageOption a:hover {
+	color: #666666;
+	padding-right: 10px;
+}
+/* /// PAGE TITLE /// */
+.pageTitle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+
+	color: #2580a2;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 10px;
+}
+.MenuHeader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+
+	color: #C20320;
+	border-bottom: 1px solid #CCCCCC;
+	padding-left: 5px;
+}
+
+.sectionTitle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border-bottom: 1px solid #CCCCCC;
+	width: 500px;
+	padding: 20px 5px 5px;
+}
+.sectionCaption{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	width: 500px;
+	padding: 5px 5px 10px;
+}
+/* /// TABLAS /// */
+.agendaEventos{
+	width:100%;
+}
+.fila_par {
+	background-color: #eee;
+}
+
+.fila_impar {
+	background-color: #fff;
+}
+table{
+	background-color: #2580a2;
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	table-layout:auto;
+	}
+.tabla_list {
+	background-color: #FFFFFF;
+	white-space:nowrap;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #2580a2;
+	}	
+.table_footer{
+	padding: 20px;
+}
+th{
+Color:#FFF;	
+	
+}
+table{
+	font-size:14px;
+	
+	
+	}
+td{
+/*	text-align: center; */
+	text-indent:2px;
+	vertical-align: middle;
+}
+.td_text{
+	font-size: 18px;
+	text-align: left;
+	vertical-align: middle;
+	background-color: #FFFFFF;
+}
+
+.td_area{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	border:1px solid #00f;	
+	text-align: left;
+	vertical-align: middle;
+	background-color: #FFFFFF;
+	white-space:nowrap;
+	color: #333333;
+}
+.td_area:disabled
+{
+color:#202020;
+	border:1px solid #000000;	
+background-color: #FFFFFF;
+	text-align: left;
+	vertical-align: middle;
+}
+.paginado{
+	text-align: center;
+	vertical-align: middle;
+	background-color: #FFFFFF;
+
+}
+.hidden {
+	visibility:hidden;
+}
+
+.not_displayed {
+	display:none;
+}
+
+.to_left {
+	/*float:left;*/
+	/*width:450px;*/
+	/*border:1px solid #555;*/
+	/*min-height:500px;*/
+
+}
+
+#evento_details_container {
+	float:left;
+	margin-left:180px;
+	
+}
+
+#contacto_details_container {
+	float:left;
+	margin-left:15px;
+}
+
+.detailed {
+
+}
+
+
+
+

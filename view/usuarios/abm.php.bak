@@ -1,0 +1,72 @@
+
+<div class="contentArea"> 
+
+
+<? if($cambio == "nuevo") {?>
+<form name="usuario" method="post" enctype="multipart/form-data" action="index.php?accion=insert">
+<? }else{ ?>
+<form name="usuario" method="post" enctype="multipart/form-data" action="index.php?accion=update&id=<?= $usuario->get_idUsuario() ?>">
+<? } ?>
+<div class="pageTitle">
+<?= $mensaje_cabezera?><br>
+</div>
+<table class="tabla_list" cellpadding=3 cellspacing=3  border=1 width="90%" align="center">
+	<tr>
+		<td class="td_text" width="15%">Nombre :</td><td class="td_text" ><input name="nombre" maxlength="30" type="text" <?= $deshabilitado?> value="<?=$nombre?>" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+	<tr>
+		<td class="td_text">Apellido :</td><td class="td_text"><input name="apellido" maxlength="30" type="text" <?= $deshabilitado?> value="<?=$apellido?>" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+	<tr>
+		<td class="td_text">Telefono :</td><td class="td_text"><input name="telefono" maxlength="45" type="text" <?= $deshabilitado?> value="<?=$telefono?>" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+	<tr>
+		<td class="td_text">Email :</td><td class="td_text"><input name="email" maxlength="45" type="text" <?= $deshabilitado?> value="<?=$email?>" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+	<tr>
+		<td class="td_text">Usuario :</td><td class="td_text"><input name="usuario" maxlength="15" type="text" <?= $deshabilitado?> value="<?=$user?>" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+	<tr>
+		<td class="td_text">Contrase&ntilde;a :</td><td class="td_text"><input name="pass" maxlength="10" type="password" <?= $deshabilitado?> value="<?=$pass?>" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+<? if($cambio == "nuevo" OR $cambio == "modificar"){?>	
+	<tr>
+		<td class="td_text">Confirmar Contrase&ntilde;a :</td><td class="td_text"><input name="pass1" maxlength="10" type="password" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+<? } ?>
+	<tr>
+		<td class="td_text">Gerarquia :</td><td class="td_text">
+		<select name="gerarquia">
+		<option value="1" <? if($gerarquia == 1) echo "selected";?>>Administrador</option>
+		<option value="0" <? if($gerarquia == 0) echo "selected";?>>Vendedor</option>
+		</select>
+		<input name="telefono" maxlength="45" type="text" <?= $deshabilitado?> value="<?=$telefono?>" onFocus="foco(this);" onBlur="no_foco(this);"></td>
+	</tr>
+	<tr>
+	<td class="submit" align="center" colspan="10" ><?if($boton== true){?><input type="submit" name="submit" value="GUARDAR"><? } ?></td>
+	</tr>
+	
+	</table>
+<?// if($gerarquia == true) {?>
+<? if($detalle == true) {?>
+<table class="tabla_list">
+<tr>
+	<td><a href="index.php?accion=modify&id=<?= $usuario->get_idUsuario() ?>"><img style="display:block;" src="<?= IMGS?>editar.png"  border="0"></a></td>
+	<td><a href="index.php?accion=modify&id=<?= $usuario->get_idUsuario() ?>">Editar</a></td>
+	<td>&nbsp;&nbsp;&nbsp;</td>
+<!--	< ?if($usuario->get_id_tipo() != 1){ ?> -->
+	<td><a href="javaScript:pregunta('<?= $usuario->get_idUsuario()?>', 'Usuario :')"><img style="display:block;" src="<?= IMGS?>eliminar.png"  border="0"></a></td>
+	<td><a href="javaScript:pregunta('<?= $usuario->get_idUsuario()?>', 'Usuario :')">Eliminar</a></td>
+<!--	< ? } ?> -->
+</tr>
+
+</table>
+<? }?>
+<?// }?>
+	</form>
+	</div>
+	</div>
+
+<script src="../../view/js/models/gen_validatorv2.js" language="javascript" type="text/javascript"></script>
+<script src="../../view/js/validaciones/usuarios/modificacion.js" language="javascript" type="text/javascript"></script>
+

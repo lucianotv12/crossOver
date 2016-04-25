@@ -1,0 +1,144 @@
+<?php
+class Pdv {
+	 var $id; 
+	 var $clave;
+	 var $tipo; 
+	 var $cantidad_vendedores; 
+	 var $km;
+	 var $razon_social;
+
+	 function Pdv($_id=0) { 
+	 	if ($_id<>0) { 
+	 		$query_carga= "select * from pdvs where id=$_id";
+	 		$result_carga = mysql_query($query_carga); 
+	 		$datos_carga = mysql_fetch_assoc($result_carga); 
+	 		$this->id = $datos_carga['id']; 
+	 		$this->clave = $datos_carga['clave'];
+	 		$this->tipo = $datos_carga['tipo']; 
+	 		$this->cantidad_vendedores = $datos_carga['cantidad_vendedores']; 
+	 		$this->km = $datos_carga['km']; 
+	 		$this->razon_social = $datos_carga['razon_social']; 
+
+	 	} 
+	 } 
+
+	 function save() {//Guarda o inserta segun corresponda 
+	 	//ESTAS FUNCIONES NO SE VAN A UTILIZAR
+	 	if ($this->id<>0) { 
+	 		$query_save = "update pdvs set clave = '$this->clave', tipo = '$this->tipo', cantidad_vendedores = '$this->cantidad_vendedores', km = '$this->km', razon_social = '$this->razon_social' where id='$this->id'"; 
+	 		mysql_query($query_save) or die(mysql_error()); 
+	 	} else { 
+	 		$query_save = "insert into pdvs values (null, '$this->clave', '$this->tipo', '$this->cantidad_vendedores', '$this->km', '$this->razon_social')"; 
+	 		mysql_query($query_save) or die(mysql_error());
+	 		$this->id = mysql_insert_id(); 
+	 	} 
+
+	 } 
+
+	/*---GETTERS--------------------------------------------------------------*/ 
+	function get_id() { return($this->id); } 
+	function get_clave() { return($this->clave); } 
+	function get_tipo() { return($this->tipo); } 
+	function get_cantidad_vendedores() { return($this->cantidad_vendedores); } 
+	function get_km() { return($this->km); } 
+	function get_razon_social() { return($this->razon_social); } 
+
+
+	/*------------------------------------------------------------------------*/ 
+	
+	/*---SETTERS--------------------------------------------------------------*/ 
+
+	function set_id($_id) { $this->id = $_id; } 
+	function set_clave($_clave) { $this->clave = $_clave; } 
+	function set_tipo($_tipo) { $this->tipo = $_tipo; } 
+	function set_cantidad_vendedores($_cantidad_vendedores) { $this->cantidad_vendedores = $_cantidad_vendedores; } 
+	function set_km($_km) { $this->km = $_km; } 
+	function set_razon_social($_razon_social) { $this->razon_social = $_razon_social; } 
+
+
+	/*------------------------------------------------------------------------*/ 
+
+
+
+	/*FUNCION VERFICADORA DE ADMIN AND PASSWORD*/
+	function login_admin($_id,$_clave)
+	{
+		$_id = mysql_real_escape_string($_id);
+		$_clave = mysql_real_escape_string($_clave);
+			
+		$query_verificacion="select id from pdvs where pos = '$_id' AND clave = '$_clave'";
+		$result_verificacion= mysql_query($query_verificacion);
+		$nRows = mysql_num_rows($result_verificacion);
+		if ($nRows)
+		{
+			$dato_pdv = mysql_fetch_assoc($result_verificacion);
+			return("PDV-".$dato_pdv["id"]);
+		}else{
+			$merchandiser = Merchandiser::login_merchandiser($_id,$_clave);
+			return($merchandiser);
+		}
+	}
+
+
+	/* AGREGA CANTIDAD DE VENDEDORES QUE TIENE EL PDV*/
+	function registro_vendedores($pdvId, $vendedores, $vendedoresActuales = 0){
+		
+		if($vendedoresActuales >  $vendedores ):
+			$cantidadABorrar = $vendedoresActuales - $vendedores;
+			$vendedores_detalle = Vendedor::vendedoresxPdv($pdvId, 1, $cantidadABorrar );
+
+			foreach ($vendedores_detalle as $vendedor):
+
+				Vendedor::eraseVendedor($vendedor["id"]);
+
+			endforeach;	
+
+		endif;	
+
+		$pdvId = mysql_real_escape_string($pdvId);
+		$vendedores = mysql_real_escape_string($vendedores);
+
+	 	$query = "update pdvs set cantidad_vendedores = $vendedores where id = $pdvId ";
+		mysql_query($query);
+		if(mysql_affected_rows()):
+			session_destroy();
+			session_start();			
+		 	$_pdv = new Pdv($pdvId);
+		  	$_SESSION["pdv"] = serialize($_pdv);
+			
+		endif; 
+		
+	}
+
+	/* AGREGA CANTIDAD DE VENDEDORES QUE TIENE EL PDV*/
+
+	function comprobar_vendedores($pdvs_id, $cantidadVendedores){
+
+		$pdvs_id = mysql_real_escape_string($pdvs_id);
+		$cantidadVendedores = mysql_real_escape_string($cantidadVendedores);
+
+
+		$vendedoresCargados = Vendedor::vendedoresCargadosxPDV($pdvs_id);
+
+		if($cantidadVendedores >  $vendedoresCargados):
+			return false;
+		else:
+			return true;
+		endif;	
+
+
+	}
+
+	function ranking_pdv(){
+		$sql = "select * from pdvs order by km desc limit 50";
+		$result = mysql_query($sql);
+		$pdvs = array();
+		while ($row = mysql_fetch_assoc($result)):
+			$pdvs[] = $row;
+		endwhile;
+		return $pdvs;
+	}
+
+
+}//endclass
+?>

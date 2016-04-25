@@ -1,0 +1,58 @@
+
+
+/*@font-face {
+font-family: BebasNeueBold;
+src: url(../fonts/BebasNeueBold.otf) ;
+}*/
+@font-face {
+font-family: 'BebasNeueBold';
+src: url('../fonts/BebasNeueBold/BebasNeueBold.eot');
+src: url('../fonts/BebasNeueBold/BebasNeueBold.eot?#iefix') format('embedded-opentype'),
+url('../fonts/BebasNeueBold/BebasNeueBold.svg#BebasNeueBold') format('svg'),
+url('../fonts/BebasNeueBold/BebasNeueBold.woff') format('woff'),
+url('../fonts/BebasNeueBold/BebasNeueBold.ttf') format('truetype');
+}
+
+
+@font-face {
+font-family: 'BebasNeueBook';
+src: url('../fonts/BebasNeueBook/BebasNeueBook.eot');
+src: url('../fonts/BebasNeueBook/BebasNeueBook.eot?#iefix') format('embedded-opentype'),
+url('../fonts/BebasNeueBook/BebasNeueBook.svg#BebasNeueBook') format('svg'),
+url('../fonts/BebasNeueBook/BebasNeueBook.woff') format('woff'),
+url('../fonts/BebasNeueBook/BebasNeueBook.ttf') format('truetype');
+/*font-weight: normal;
+font-style: normal;*/
+}
+
+
+
+@font-face {
+font-family: 'BebasNeueRegular';
+src: url('../fonts/BebasNeueRegular/BebasNeueRegular.eot');
+src: url('../fonts/BebasNeueRegular/BebasNeueRegular.eot?#iefix') format('embedded-opentype'),
+url('../fonts/BebasNeueRegular/BebasNeueRegular.svg#BebasNeueRegular') format('svg'),
+url('../fonts/BebasNeueRegular/BebasNeueRegular.woff') format('woff'),
+url('../fonts/BebasNeueRegular/BebasNeueRegular.ttf') format('truetype');
+}
+
+
+@font-face {
+font-family: EuroStyle;
+src: url('../fonts/Eurostile/EurostileLTStd.eot');
+src: url('../fonts/Eurostile/EurostileLTStd.eot?#iefix') format('embedded-opentype'),
+url('../fonts/Eurostile/EurostileLTStd.svg#EurostileLTStd') format('svg'),
+url('../fonts/Eurostile/EurostileLTStd.woff') format('woff'),
+url('../fonts/Eurostile/EurostileLTStd.ttf') format('truetype');
+}
+
+@font-face {
+font-family: EuroStyleBold;
+src: url('../fonts/EurostileLTStd-Bold/EurostileLTStd-Bold.eot');
+src: url('../fonts/EurostileLTStd-Bold/EurostileLTStd-Bold.eot?#iefix') format('embedded-opentype'),
+url('../fonts/EurostileLTStd-Bold/EurostileLTStd-Bold.svg#EurostileLTStd-Bold') format('svg'),
+url('../fonts/EurostileLTStd-Bold/EurostileLTStd-Bold.woff') format('woff'),
+url('../fonts/EurostileLTStd-Bold/EurostileLTStd-Bold.ttf') format('truetype');
+font-weight: bold;
+font-style: bold;
+}

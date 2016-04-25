@@ -1,0 +1,18 @@
+/*----------------------------------------------------------------------------*/
+/*               Validaciones para el Formulario de STOCK
+/*----------------------------------------------------------------------------*/
+//You should create the validator only after the definition of the HTML form
+
+var frmvalidator  = new Validator("stock");
+
+/*---------- CODIGO BARRAS -----------*/
+frmvalidator.addValidation("codigo_barras","req","Ingrese  Codigo de Barras, ya sea por laser o manualmente");
+frmvalidator.addValidation("codigo_barras","numeric","Codigo de Barras deben ser numeros unicamente");
+
+/*---------- CANTIDAD -----------*/
+frmvalidator.addValidation("cantidad","req","Ingrese  la cantidad, ya sea por laser o manualmente");
+frmvalidator.addValidation("cantidad","numeric","Cantidad debe ser numeros unicamente");
+
+/*---------- PRECIO -----------*/
+frmvalidator.addValidation("precio","numeric","Precio debe ser numeros unicamente");
+

@@ -1,0 +1,423 @@
+body{
+    background: transparent url("../img/background_home.png") no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+  height: 950px;
+
+
+ }
+
+#body_bases{
+    background: transparent url("../img/background_bases.png") no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+  height: 100%;
+
+ }
+
+#body_ranking{
+    background: transparent url("../img/background_ranking.png") no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+  height: 100%;
+
+ }
+ #body_premios{
+    background: transparent url("../img/background_premios.png") no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+  height: 100%;
+
+ }
+
+ #cabecera{
+/* 	text-align: right;
+ 	margin-right: 20px;*/
+ 	padding-top: 20px;
+
+ }
+
+  #circular {
+ 	background-color: black;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	overflow:hidden;
+	text-align: right;
+	margin-left: 150px;
+}
+
+.container{
+	font-family: BebasNeueBold;
+	font-size: 16px;
+	min-height: 100%;
+	height: 100%;
+  clear:both;
+
+	
+
+}
+
+#tittle1{
+	text-align: center;
+
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;	
+}
+#text1{
+	text-align: center;
+	vertical-align: middle;
+	color:#D82C33;
+
+}
+h1 {
+	font-family: EuroStyle;
+	font-size:56px;
+	margin-bottom: 0px;
+
+}
+h2{
+	font-family: EuroStyle;
+	font-size:30px;
+	margin-top: 0px;
+
+}
+h3{
+	font-family: EuroStyle;
+	font-size:38px;
+
+
+}
+
+#desafios{ 
+	padding-top: 10px;
+
+}
+/*FOOTER */
+footer{
+  position: fixed;
+   width:100%;
+  background-color: black;
+  bottom: 0;
+
+}
+
+#logo_footer{
+
+
+}
+#row_footer{
+		padding-top: 30px;
+}
+
+#menu_footer{
+		padding-top: 25px;
+		font-size: 20px;
+}
+
+#footer_activo{
+	color: #D82C33;
+}
+
+/*FOOTER */
+
+#desafios{
+	/*padding-bottom: 130px;*/
+}
+
+/**kilometrossssssssss*/
+#km{
+	background:  url("../img/background_km_copy.png")   center ; 
+	background-repeat: repeat-x;
+	height: 100%;
+	width: 85%;
+	margin-top: 30px;
+	padding-left: 60px;
+
+}
+
+#km_acumulados{
+	font-size: 59px; 
+	padding-top: 30px; 
+	color:#D82C33; 
+	padding-left: 75px;
+
+}
+
+#km_descripcion{
+	font-size: 25px
+}
+
+
+#perfil_user{
+	margin: 0;
+	font-size: 22px;
+	color:#D82C33;
+
+}
+
+#listado_pdv{
+padding-top: 50px
+}
+#ranking{
+	background:  url("../img/ranking-01.png") no-repeat  ; 
+	margin: 0px 0px 2px 50px;
+	padding: 3px 0 0 5px ; 
+	width: 100%;
+/*	height: 100%;*/
+	font-size: 24px;
+	color:#808080;
+}
+
+ a{
+	text-decoration: none;
+	color: #333;
+
+}
+
+ a:hover{
+	text-decoration: none;
+	color: #D82C33;
+
+}
+
+#ranking_selected{
+	background:  url("../img/ranking-01s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_1{
+	background:  url("../img/ranking-11s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+
+#ranking_selected_2{
+	background:  url("../img/ranking-10s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+
+#ranking_selected_3{
+	background:  url("../img/ranking-09s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_4{
+	background:  url("../img/ranking-08s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_5{
+	background:  url("../img/ranking-07s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_6{
+	background:  url("../img/ranking-06s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_7{
+	background:  url("../img/ranking-05s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_8{
+	background:  url("../img/ranking-04s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_9{
+	background:  url("../img/ranking-03s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+#ranking_selected_10{
+	background:  url("../img/ranking-02s.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 	
+}
+
+
+#ranking:hover{
+	background:  url("../img/ranking-02.png") no-repeat  ; 
+	width: 701px;
+	height: 64px;
+	text-align: center;
+	color:black;
+	cursor: pointer;
+	font-size: 22px;
+	margin: 0px 0px 2px 0;
+	padding: 15px 10px 0px 5px ; 
+
+
+}
+
+#flechas {
+	padding-left: 50%;
+
+}
+
+#fuente_grande{
+font-size: 32px;
+display: inline;}
+#tipito_rojo{
+	display: inline;
+	height: 100%
+}
+
+#img_premios{
+	margin-top: -75px;
+	margin-left: -50px;
+	height: 100%
+}
+
+/* MEDIAS QUERIES */
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 767px) {
+	#menu_footer{font-size: 10px;}
+
+	#row_footer{padding-top: 0px;}
+	h1{ font-size: 30px; }
+	h2{font-size: 16px}
+	#km_acumulados{	font-size: 20px; padding-top: 0px }
+	#km_descripcion{font-size: 12px}
+	#km{height: 72px;width: 85%;}
+	#fuente_grande{font-size:14px}
+	#tipito_rojo{display: none;}
+	#img_premios{width: 100%; padding-top: 50px;}
+
+	#logo_footer{ padding-top: 20px;}
+
+	#ranking{	background:  url("../img/ranking-01-mini.png") no-repeat  ;  font-size: 12px}
+	#ranking_selected{	background:  url("../img/ranking-02-mini.png") no-repeat  ;  font-size: 12px}
+
+ }
+
+/* Medium devices (desktops, 992px and up) */
+@media(min-width:768px) and (max-width:991px){
+
+
+	#menu_footer{font-size: 10px;}
+
+	#row_footer{padding-top: 0px;}
+	h1{ font-size: 30px; }
+	h2{font-size: 16px}
+
+	#km_acumulados{	font-size: 30px; padding-top: 0px }
+	#km_descripcion{font-size: 14px}
+	#km{height: 92px;width: 85%;}
+	#fuente_grande{font-size:16px}
+	#tipito_rojo{display: none;}
+	#img_premios{width: 100%; padding-top: 60px;}
+	#ranking{	background:  url("../img/ranking-01-mini.png") no-repeat  ;  font-size: 16px}
+	#ranking_selected{	background:  url("../img/ranking-02-mini.png") no-repeat  ;  font-size: 16px}
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media(min-width:992px) and (max-width:1199px){
+	#menu_footer{font-size: 15px;}
+
+
+	#row_footer{padding-top: 0px;}
+	h1{ font-size: 40px; }
+	h2{font-size: 22px}
+
+	#km_acumulados{	font-size: 40px; padding-top: 0px}
+	#km_descripcion{font-size: 20px}
+	#km{height: 134px;width: 85%;}
+	#fuente_grande{font-size:25px}
+	#tipito_rojo{height: 50%}
+	#img_premios{width: 100%; padding-top: 50px;}
+	#ranking{	background:  url("../img/ranking-01-mini.png") no-repeat  ;  font-size: 18px}
+	#ranking_selected{	background:  url("../img/ranking-02-mini.png") no-repeat  ;  font-size: 18px}
+
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media(min-width:1199px){
+}
+
+/* MEDIAS QUERIES */
+
