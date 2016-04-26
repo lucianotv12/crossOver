@@ -15,6 +15,7 @@
 		$ruta_web = IMGS. "desafio-registracion-02.png";	
 		$id_web = "";
 		$imagen_premios = IMGS . "avion-tv-01.png";
+		$desafio_web = 0;
 
 	elseif($_pdv->tipo == 4):
 		$ruta_codigos = IMGS ."desafio-codigos-sup.png";
@@ -22,11 +23,14 @@
 		$ruta_web = "";
 
 		$imagen_premios = IMGS . "avion-dibujo.png";
+		$desafio_web = 0;
+
 	else:
 		$ruta_codigos =  IMGS ."desafio-codigos-02.png";
 		$ruta_volumen =  IMGS ."desafio-volumen-02.png";
 		$ruta_web =	 IMGS. "desafio-web-02.png";	
 		$imagen_premios = IMGS . "avion-dibujo.png";
+		$desafio_web = $_pdv->d_web;
 
 	endif;
 	?>
@@ -58,6 +62,10 @@
 		        <div class="close_web"><a href="#" id="close_web"><img src="<?php echo IMGS?>close.png"></a></div>
 		        <div>
 		        	<img src="<?php echo  $ruta_web?>">
+		        	<span id="span_web">
+  		                <a href="index.php?accion=game"><button type="submit" id="button_save">JUGÁ AHORA</button></a>
+		        	</span>
+
 		        </div>
 		    </div>
 		</div>
@@ -166,19 +174,22 @@
 							OBJETIVO VOLUMEN <font color="#D82C33">PENDIENTE </font>
 							 <?php if($_pdv->tipo == 3): 
 								 echo " &nbsp; &bull; &nbsp; D. REGISTRACION <font color='#D82C33'>PENDIENTE</font>"; 
-							 elseif($_pdv->tipo = 4):
+							 elseif($_pdv->tipo == 4):
 
-							 else: 
-							 		echo " &nbsp; &bull; &nbsp; DESAFÍO WEB <font color='#D82C33'>PENDIENTE</font>";
-							 endif;?>
+							 else: ?>
+							&nbsp;&bull;
+							DESAFÍO WEB  <?if($desafio_web == 0):?><font color="#D82C33">PENDIENTE </font>							
+										 <? else:?><font color="GREEN">CUMPLIDO </font><?endif;?>
+
+							 <?endif;?>
 
 			</div>
 		</div>
 		<div class="col-xs-3">
 			<?php if($_pdv->tipo == 4):?>
-				<a href="index.php?accion=premios"><img src="<?php echo  $imagen_premios?>" id="img_premios"></a>
+				<a href="premios"><img src="<?php echo  $imagen_premios?>" id="img_premios"></a>
 			<?php else:?>
-				<a href="index.php?accion=premios"><img src="<?php echo  $imagen_premios?>" id="img_premios"></a>
+				<a href="premios"><img src="<?php echo  $imagen_premios?>" id="img_premios"></a>
 			<?php endif;?>
 		</div>	
 	</div>

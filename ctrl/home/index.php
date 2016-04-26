@@ -41,9 +41,10 @@ switch($accion):
 	case "ranking_merchan" :
 		{
 
+		$_pdv = unserialize($_SESSION["pdv"]);
+		$tipo = $_pdv->tipo;	
 
-
-		$ranking = Merchandiser::ranking_merchan($_GET["tipo"]);	
+		$ranking = Merchandiser::ranking_merchan($tipo);	
 
 		Template::draw_header("body_ranking");
 		include("../../view/home/ranking.php");
@@ -90,7 +91,21 @@ switch($accion):
 		include("../../view/home/" . $bases);
 		Template::draw_footer();
 
-		}			
+		}		
+		break;
+	case "game" :
+		{
+		$_pdv = unserialize($_SESSION["pdv"]);
+
+		if($_pdv->d_web == 0):
+
+			Pdv::desafio_web($_pdv->id);	
+		endif;
+		Template::draw_header(0,"GAME");
+		include("../../view/game/index.html");
+		Template::draw_footer();
+
+		}					
 
 endswitch;
 ?>

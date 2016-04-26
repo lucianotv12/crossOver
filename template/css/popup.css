@@ -59,6 +59,12 @@
   font-size: 26px
 }
 
+#span_web{
+  position: relative;
+  left: 300px;
+  top:-120px;
+  font-size: 26px
+}
 .popup-overlay {
   left: 0;
     position: absolute;

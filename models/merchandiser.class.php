@@ -111,6 +111,7 @@ class Merchandiser {
 
 
 			//DESAFIO REGISTRACION
+			Pdv::log_usuario($dato_merchandiser["id"], "merchandiser");
 
 			return("MERCHAN-" . $dato_merchandiser["id"]);			
 		}else{
@@ -180,7 +181,114 @@ class Merchandiser {
 
 	}
 
-	
+
+//ADMINISTRATOR
+	function administrator_merchandiser($ordenar=0, $tipo_orden=0){ 
+		if($ordenar):
+ 			$orderClause = " ORDER BY $ordenar $tipo_orden"; 
+		else:
+			$orderClause = " ";
+
+		endif;		
+
+
+		 	$sql = "SELECT M.nombre,  if(M.jefe_id = 1, 'JEFE', J.nombre) as JEFE, M.dni, M.fechaIngreso, M.codigos_cargados,
+					M.km, M.d_registracion, M.d_codigos, M.d_volumen
+					FROM `merchandisers` M
+					inner join merchandisers as J ON M.jefe_id = J.id
+					Where M.tipo = 3
+					 $orderClause";
+		$result = mysql_query($sql);
+		$pdvs = array();
+		while ($row = mysql_fetch_assoc($result)):
+			$pdvs[] = $row;
+		endwhile;
+		return $pdvs;
+
+	}
+
+	function administrator_supervisores($ordenar=0, $tipo_orden=0){ 
+		if($ordenar):
+ 			$orderClause = " ORDER BY $ordenar $tipo_orden"; 
+		else:
+			$orderClause = " ";
+
+		endif;		
+
+
+		 	$sql = "SELECT M.nombre,  M.dni, M.fechaIngreso, M.codigos_cargados,
+					M.km, M.d_codigos, M.d_volumen
+					FROM `merchandisers` M
+					Where M.tipo = 4					
+					 $orderClause";
+		$result = mysql_query($sql);
+		$pdvs = array();
+		while ($row = mysql_fetch_assoc($result)):
+			$pdvs[] = $row;
+		endwhile;
+		return $pdvs;
+
+	}
+
+function actualizacion_masiva_registracion(){
+
+		$query = "select * from merchandisers where tipo = 3 and jefe_id != 1";
+		$result = mysql_query($query);
+
+		while ($row = mysql_fetch_assoc($result)):
+		$_id = $row["id"];	
+	 	$total_pos = mysql_result(mysql_query("select count(id) from pdvs where merchandiser_id = " . $_id),0);
+		$total_registrados = mysql_result(mysql_query("select count(id) from pdvs where merchandiser_id = " . $_id . " and ingreso = 1"),0);
+
+		$porcentaje_registro = $total_registrados * 100 / $total_pos; 
+
+
+			if($porcentaje_registro > 39):
+				if( $porcentaje_registro >= 40 and $porcentaje_registro < 50):
+					$porcentaje =  "100";
+				elseif( $porcentaje_registro >= 50 and $porcentaje_registro < 60):
+					$porcentaje = "200";
+				elseif( $porcentaje_registro >= 60 and $porcentaje_registro < 70):
+					$porcentaje = "300";
+				elseif( $porcentaje_registro >= 70 and $porcentaje_registro < 80):
+					$porcentaje = "400";
+				elseif( $porcentaje_registro >= 80 and $porcentaje_registro < 90):
+					$porcentaje = "500";
+				elseif( $porcentaje_registro >= 90 and $porcentaje_registro < 100):
+					$porcentaje = "600";					
+				elseif( $porcentaje_registro == 100):
+					$porcentaje = "700";
+				endif;
+
+				$total_km = $row["d_codigos"] + $row["d_volumen"] + $porcentaje;
+
+				//update d_registracion and km
+				mysql_query("update merchandisers set d_registracion = '$porcentaje', km = '$total_km' where id = ". $_id);
+			endif;	
+		endwhile;		
+
+}
+
+function actualizacion_masiva_supervisores(){
+
+		$query = "select * from merchandisers where tipo = 4";
+		$result = mysql_query($query);
+
+		while ($row = mysql_fetch_assoc($result)):
+			$_id = $row["id"];	
+
+			$total_km = $row["d_codigos"] + $row["d_volumen"];
+
+				//update d_registracion and km
+				mysql_query("update merchandisers set  km = '$total_km' where id = ". $_id);
+		endwhile;		
+
+}
+
+
+
+//ADMINISTRATOR	
+
 	/*---GETTERS--------------------------------------------------------------*/ 
 
 	function get_id() { return($this->id); }

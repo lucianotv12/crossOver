@@ -88,7 +88,7 @@ class Usuario
 
 	/*FUNCION VERFICADORA DE ADMIN AND PASSWORD*/
 	function login_admin($_user,$_password)
-		{
+		{ 
 		$query_verificacion="select idUsuario from usuarios where user = '$_user' AND password = '$_password'";
 		$result_verificacion= mysql_query($query_verificacion);
 		$nRows = mysql_num_rows($result_verificacion);

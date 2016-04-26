@@ -1,0 +1,41 @@
+{ "height":1,
+ "layers":[
+        {
+         "data":[4, 4, 4, 4, 12, 2, 2, 2, 6, 1, 1, 1, 5, 6, 1, 1, 7, 3, 3, 3, 10, 6, 1, 1, 1, 5, 6, 1, 1, 1, 5, 2, 9, 3, 8, 1, 1, 1, 5, 2, 2, 11, 12, 6, 1, 1, 5, 2, 9, 8, 1, 1, 1, 1, 7, 3, 10, 2, 2, 2, 9, 3, 3, 3, 8, 1, 1, 1, 1, 5, 9, 3, 3, 10, 2, 11, 4, 4, 4, 12, 2, 2, 2, 9, 3, 3, 10, 2, 2, 11, 12, 9, 8, 1, 1, 1, 5, 6, 1, 1],
+         "height":1,
+         "name":"terrain",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":100,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "renderorder":"right-down",
+ "tileheight":283,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/tiles\/tiles.png",
+         "imageheight":283,
+         "imagewidth":2520,
+         "margin":0,
+         "name":"tiles",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":283,
+         "tilewidth":210
+        }],
+ "tilewidth":210,
+ "version":1,
+ "width":100
+}

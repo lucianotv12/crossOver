@@ -76,16 +76,10 @@ $db = mysql_select_db ("marlboro_cross_over",$cn) or die ("ERROR AL CONECTAR A L
 
 // Llenamos el arreglo con los datos  del archivo xlsx
 
-for ($i=1;$i<=450;$i++){ 
+for ($i=1;$i<=200;$i++){ 
 
 $_DATOS_EXCEL[$i]['pos'] = $objPHPExcel->getActiveSheet()->getCell("A".$i)->getCalculatedValue();
-$_DATOS_EXCEL[$i]['merchan'] = $objPHPExcel->getActiveSheet()->getCell("B".$i)->getCalculatedValue();
-$_DATOS_EXCEL[$i]['tipo'] = $objPHPExcel->getActiveSheet()->getCell("C".$i)->getCalculatedValue();
-$_DATOS_EXCEL[$i]['razon_social'] = $objPHPExcel->getActiveSheet()->getCell("D".$i)->getCalculatedValue();
-$_DATOS_EXCEL[$i]['calle'] = $objPHPExcel->getActiveSheet()->getCell("E".$i)->getCalculatedValue();
-$_DATOS_EXCEL[$i]['numero'] = $objPHPExcel->getActiveSheet()->getCell("F".$i)->getCalculatedValue();
-$_DATOS_EXCEL[$i]['localidad'] = $objPHPExcel->getActiveSheet()->getCell("G".$i)->getCalculatedValue();
-$_DATOS_EXCEL[$i]['ob'] = $objPHPExcel->getActiveSheet()->getCell("H".$i)->getCalculatedValue();
+$_DATOS_EXCEL[$i]['codigos'] = $objPHPExcel->getActiveSheet()->getCell("B".$i)->getCalculatedValue();
 
 }
 
@@ -132,20 +126,14 @@ foreach($_DATOS_EXCEL as $campo => $valor){
 
 
  $pos = mysql_real_escape_string($valor["pos"]);
- $merchan = mysql_real_escape_string($valor["merchan"]);
- $tipo = mysql_real_escape_string($valor["tipo"]);
- $razon_social = mysql_real_escape_string($valor["razon_social"]);
- $calle = mysql_real_escape_string($valor["calle"]);
- $numero = mysql_real_escape_string($valor["numero"]); 
- $localidad = mysql_real_escape_string($valor["localidad"]); 
- $ob = mysql_real_escape_string($valor["ob"]); 
- $clave = mysql_real_escape_string(generaPass());
+ $codigos = mysql_real_escape_string($valor["codigos"]);
+
  
  if($pos != "" ):
 
-//            mysql_query("update pdvs set codigos_cargados = '$cantidad'  where pos = '$pos'");
+            mysql_query("update pdvs set codigos_cargados = '$codigos'  where pos = '$pos'");
 
-         mysql_query("insert into pdvs values (NULL, '$clave', '$tipo', '0','0', '$razon_social', '$calle', '$numero','$localidad', '0', '0', '$merchan', '$pos', '0', '0', NULL, 0,'$ob','$ob',0,0 )");   
+//         mysql_query("insert into pdvs values (NULL, '$clave', '$tipo', '0','0', '$razon_social', '$calle', '$numero','$localidad', '0', '0', '$merchan', '$pos', '0', '0', NULL, 0,'$ob','$ob',0,0 )");   
          if(mysql_affected_rows()):
             $contador++;
          endif;   

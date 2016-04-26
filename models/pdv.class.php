@@ -13,6 +13,7 @@ class Pdv {
 	 var $objetivo_mayo;
 	 var $codigos_cargados;
 	 var $codigo_entregado;
+	 var $d_web;
 
 
 
@@ -35,6 +36,7 @@ class Pdv {
 	 		$this->objetivo_mayo = $datos_carga['objetivo_mayo']; 
 	 		$this->codigos_cargados = $datos_carga['codigos_cargados']; 
 	 		$this->codigo_entregado = $datos_carga['codigo_entregado']; 
+	 		$this->d_web = $datos_carga['d_web']; 
 
 
 	 	} 
@@ -43,10 +45,10 @@ class Pdv {
 	 function save() {//Guarda o inserta segun corresponda 
 	 	//ESTAS FUNCIONES NO SE VAN A UTILIZAR
 	 	if ($this->id<>0) { 
-	 		$query_save = "update pdvs set clave = '$this->clave', tipo = '$this->tipo', cantidad_vendedores = '$this->cantidad_vendedores', km = '$this->km', razon_social = '$this->razon_social', ingreso = '$this->ingreso', basesycondiciones = '$this->basesycondiciones', fechaIngreso = '$this->fechaIngreso', supervisor_id = '$this->supervisor_id', objetivo_abril = '$this->objetivo_abril', objetivo_mayo = '$this->objetivo_mayo', codigos_cargados = '$this->codigos_cargados', codigo_entregado = '$this->codigo_entregado'  where id='$this->id'"; 
+	 		$query_save = "update pdvs set clave = '$this->clave', tipo = '$this->tipo', cantidad_vendedores = '$this->cantidad_vendedores', km = '$this->km', razon_social = '$this->razon_social', ingreso = '$this->ingreso', basesycondiciones = '$this->basesycondiciones', fechaIngreso = '$this->fechaIngreso', supervisor_id = '$this->supervisor_id', objetivo_abril = '$this->objetivo_abril', objetivo_mayo = '$this->objetivo_mayo', codigos_cargados = '$this->codigos_cargados', codigo_entregado = '$this->codigo_entregado', d_web = '$this->d_web'  where id='$this->id'"; 
 	 		mysql_query($query_save) or die(mysql_error()); 
 	 	} else { 
-	 		$query_save = "insert into pdvs values (null, '$this->clave', '$this->tipo', '$this->cantidad_vendedores', '$this->km', '$this->razon_social', '$this->ingreso', '$this->basesycondiciones', '$this->fechaIngreso', '$this->codigos_cargados', '$this->codigo_entregado')"; 
+	 		$query_save = "insert into pdvs values (null, '$this->clave', '$this->tipo', '$this->cantidad_vendedores', '$this->km', '$this->razon_social', '$this->ingreso', '$this->basesycondiciones', '$this->fechaIngreso', '$this->codigos_cargados', '$this->codigo_entregado', '$this->d_web')"; 
 	 		mysql_query($query_save) or die(mysql_error());
 	 		$this->id = mysql_insert_id(); 
 	 	} 
@@ -67,6 +69,7 @@ class Pdv {
 	function get_objetivo_mayo() { return($this->objetivo_mayo); } 
 	function get_codigos_cargados() { return($this->codigos_cargados); } 
 	function get_codigo_entregado() { return($this->codigo_entregado); } 
+	function get_d_web() { return($this->d_web); } 
 
 
 	/*------------------------------------------------------------------------*/ 
@@ -87,6 +90,7 @@ class Pdv {
 	function set_objetivo_mayo($_objetivo_mayo) { $this->objetivo_mayo = $_objetivo_mayo; } 
 	function set_codigos_cargados($_codigos_cargados) { $this->codigos_cargados = $_codigos_cargados; } 
 	function set_codigo_entregado($_codigo_entregado) { $this->codigo_entregado = $_codigo_entregado; } 
+	function set_d_web($_d_web) { $this->d_web = $_d_web; } 
 
 
 	/*------------------------------------------------------------------------*/ 
@@ -107,10 +111,13 @@ class Pdv {
 			$dato_pdv = mysql_fetch_assoc($result_verificacion);
 			Pdv::verifica_acceso($dato_pdv["id"]);
 			if($dato_pdv["id"] == 654 or $dato_pdv["id"] == 655):
-				PDV::actualiza_masiva();
+				Pdv::actualiza_masiva();
+				Merchandiser::actualizacion_masiva_registracion();
+				Merchandiser::actualizacion_masiva_supervisores();
 			endif;
 
 			Pdv::actualiza_km($dato_pdv["id"]);
+			Pdv::log_usuario($dato_pdv["id"], "pdv");
 			return("PDV-".$dato_pdv["id"]);
 		}else{
 			$merchandiser = Merchandiser::login_merchandiser($_id,$_clave);
@@ -234,7 +241,9 @@ class Pdv {
 
 		if($codigos_cargados):
 			$codigos_cargados = $codigos_cargados * 100;
-
+			if($pdv->d_web == 1):
+			$codigos_cargados = $codigos_cargados + 200;
+			endif;
 			mysql_query("update pdvs set km = $codigos_cargados where id = $_id");
 
 		endif;	
@@ -251,12 +260,71 @@ class Pdv {
 			$_id = $row["id"];
 
 			$codigos_cargados = $row["codigos_cargados"] * 100;
+			if($row["d_web"] == 1):
+				$codigos_cargados = $codigos_cargados + 200;
+			endif;
 			mysql_query("update pdvs set km = $codigos_cargados where id = $_id");
 
 		endwhile;
 
 
 	}
+
+	function desafio_web($_id){
+	//	echo $_id;
+		$_id = mysql_real_escape_string($_id);
+	//	echo "update pdvs set d_web = 1 and km = km + 200 where id = $_id";die;
+		mysql_query("update pdvs set d_web = 1, km = km + 200 where id = $_id");
+
+		session_destroy();
+		session_start();			
+	 	$_pdv = new Pdv($_id);
+	  	$_SESSION["pdv"] = serialize($_pdv);
+
+	}
+
+	function log_usuario($_id, $tipo){
+		mysql_query("insert into log_usuarios values (NULL, '$tipo', '$_id', NOW())");
+
+	}
+
+
+//ADMINISTRATOR
+	function administrator_pdv($_tipo=0, $ordenar=0, $tipo_orden=0){ 
+		if($_tipo == "KKAA"):
+			$_tipo = mysql_real_escape_string($_tipo);
+			$supervisor_join = " INNER JOIN merchandisers as S ON P.supervisor_id = S.id ";
+			$supervisor_select = " S.nombre AS Supervisor, ";
+		else:	
+			$_tipo = mysql_real_escape_string($_tipo);
+		endif;
+
+		if($ordenar):
+ 			$orderClause = " ORDER BY $ordenar $tipo_orden"; 
+		else:
+			$orderClause = " ";
+
+		endif;		
+
+
+		 	$sql = "SELECT pos, P.tipo, razon_social, concat(calle, ' ', numero) as direccion, localidad, 
+				$supervisor_select M.nombre as merchandisers, P.codigos_cargados, P.km, P.cantidad_vendedores, 
+				P.objetivo_abril, 
+				P.objetivo_mayo, if(d_web = 1, 'COMPLETO', 'PENDIENTE') AS desafio_web  
+				FROM pdvs AS P 
+				$supervisor_join
+				INNER JOIN merchandisers as M ON P.merchandiser_id = M.id
+				WHERE P.tipo = '$_tipo' $orderClause";
+		$result = mysql_query($sql);
+		$pdvs = array();
+		while ($row = mysql_fetch_assoc($result)):
+			$pdvs[] = $row;
+		endwhile;
+		return $pdvs;
+
+	}
+
+//ADMINISTRATOR
 
 }//endclass
 ?>

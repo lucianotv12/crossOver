@@ -180,35 +180,33 @@ else:
               </div>
               <div class="col-xs-9" id="menu_footer">
                 <div class="row">
-                    <a href="index.php" id="<?= ($_GET['accion'] == '')? 'footer_activo': '' ?>">Desafios</a>
+                    <a href="home" id="<?= ($_GET['accion'] == '')? 'footer_activo': '' ?>">Desafios</a>
+                    &nbsp;
+                    &nbsp;
+                    <?
+                      $_pdv = unserialize($_SESSION["pdv"]);
+                      if($_pdv->tipo == 3 or $_pdv->tipo == 4 ):?>
+                        <a href="ranking_merchan" id="<?= ($_GET['accion'] == 'ranking_merchan')? 'footer_activo':''?>">RANKING</a> 
+                      <? else:?>
+                        <a href="ranking" id="<?= ($_GET['accion'] == 'ranking')? 'footer_activo':''?>">RANKING</a> 
+                      <? endif;?>
+                    &nbsp;
+                    &nbsp;
+                    <a href="premios" id="<?= ($_GET['accion'] == 'premios')? 'footer_activo':''?>">Premios</a>      
                     &nbsp;
                     &nbsp;
                     <?
                       $_pdv = unserialize($_SESSION["pdv"]);
                       if($_pdv->tipo == 3):?>
-                        <a href="index.php?accion=ranking_merchan&tipo=3" id="<?= ($_GET['accion'] == 'ranking_merchan')? 'footer_activo':''?>">RANKING</a> 
-                      <?php elseif($_pdv->tipo == 4):  ?>
-                        <a href="index.php?accion=ranking_merchan&tipo=4" id="<?= ($_GET['accion'] == 'ranking_supervisores')? 'footer_activo':''?>">RANKING</a> 
+                        <a href="mispdvs" id="<?= ($_GET['accion'] == 'promo')? 'footer_activo':''?>">MIS PDVS</a> 
                       <? else:?>
-                        <a href="index.php?accion=ranking" id="<?= ($_GET['accion'] == 'ranking')? 'footer_activo':''?>">RANKING</a> 
-                      <? endif;?>
-                    &nbsp;
-                    &nbsp;
-                    <a href="index.php?accion=premios" id="<?= ($_GET['accion'] == 'premios')? 'footer_activo':''?>">Premios</a>      
-                    &nbsp;
-                    &nbsp;
-                    <?
-                      $_pdv = unserialize($_SESSION["pdv"]);
-                      if($_pdv->tipo == 3):?>
-                        <a href="index.php?accion=mispdvs" id="<?= ($_GET['accion'] == 'promo')? 'footer_activo':''?>">MIS PDVS</a> 
-                      <? else:?>
-                        <a href="index.php?accion=promo" id="<?= ($_GET['accion'] == 'promo')? 'footer_activo':''?>">Promoción Consumidores</a> 
+                        <a href="promo" id="<?= ($_GET['accion'] == 'promo')? 'footer_activo':''?>">Promoción Consumidores</a> 
                       <? endif;?>
 
 
                     &nbsp;
                     &nbsp;
-                    <a href="index.php?accion=basesycondiciones" id="<?= ($_GET['accion'] == 'basesycondiciones')?'footer_activo':''?>">Bases y Condiciones</a>                    
+                    <a href="basesycondiciones" id="<?= ($_GET['accion'] == 'basesycondiciones')?'footer_activo':''?>">Bases y Condiciones</a>                    
                 </div>                     
               </div>
             </div>
