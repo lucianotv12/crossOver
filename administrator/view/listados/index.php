@@ -41,8 +41,8 @@
         
         <form method="post" name="datos">
                 
-            <table class="table table-striped">
-              <tr style="background: gray; color: white; font-size: 20px">
+            <table class="table table-striped table-bordered">
+              <tr style="background: gray; color: white; font-size: 14px; font-family: arial; font-weight: normal;">
                 <th>POS
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','pos','ASC')"><img  src="<?= IMGS?>prev.png"  border="0"  ></a>
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','pos','DESC')"><img  src="<?= IMGS?>next.png"  border="0" ></a>           
@@ -73,7 +73,7 @@
 
               </tr>
               <?php foreach($pdvs as $pdv):?>
-              <tr style="color:gray">
+              <tr style=" color: gray; font-size: 12px; font-family: arial; font-weight: normal;">
                 <td><?php echo $pdv["pos"];?></td>   
                 <td><?php echo $pdv["tipo"];?></td>   
                 <td><?php echo $pdv["razon_social"];?></td>   

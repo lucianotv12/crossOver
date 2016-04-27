@@ -41,8 +41,8 @@
         
         <form method="post" name="datos">
                 
-            <table class="table table-striped">
-              <tr style="background: gray; color: white; font-size: 20px">
+            <table class="table table-striped table-bordered">
+              <tr style="background: gray; color: white; font-size: 14px; font-family: arial; font-weight: normal;">
                 <th>NOMBRE
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','nombre','ASC')"><img  src="<?= IMGS?>prev.png"  border="0"  ></a>
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','nombre','DESC')"><img  src="<?= IMGS?>next.png"  border="0" ></a>           
@@ -67,7 +67,7 @@
 
               </tr>
               <?php foreach($pdvs as $pdv):?>
-              <tr style="color:gray">
+              <tr style=" color: gray; font-size: 12px; font-family: arial; font-weight: normal;">
                 <td><?php echo $pdv["nombre"];?></td>   
                 <td><?php echo $pdv["JEFE"];?></td>   
                 <td><?php echo $pdv["dni"];?></td>   
