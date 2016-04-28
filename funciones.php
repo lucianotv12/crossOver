@@ -77,18 +77,6 @@ function validar_permanencia ($_redireccion_estricta = true)
 		}
 	}
 
-
-/*----------------------------------------------------------------------------*/
-/* Funcion que retorna el directorio correspondiente a la $_categoria_id y el $_categoria_id
-/*----------------------------------------------------------------------------*/
-function file_patch($_categoria_id, $_articulo_id)
-	{
-	return FILES_PATCH.$_categoria_id."/".$_articulo_id."/";
-	}
-
-/*----------------------------------------------------------------------------*/
-/* funcion que regresa a la url que inicio la peticion
-/*----------------------------------------------------------------------------*/
 function regresar ($_regresar=1)
 	{
  	?>
@@ -112,43 +100,6 @@ function redireccionar (  $message="", $seconds=0)
 	echo "<h4>".$message."</h4>";
 	die();
 	}
-/*----------------------------------------------------------------------------*/
-/* funcion que regresa a la url que inicio la peticion
-/*----------------------------------------------------------------------------*/
-function arrojar_error ( $url, $message="", $seconds=3)
-	{
-	header("Refresh: ".$seconds."; url=".$url); // waits 3 seconds & sends to homepage
-	echo "<h4>".$message."</h4>";
-	die();
-	}
-
-/*----------------------------------------------------------------------------*/
-/* funcion que redirecciona a la URL pasada
-/*----------------------------------------------------------------------------*/
-function ir_a ( $url)
-	{
-	header("Location: ".$url);
-	die();
-	}
-
-/**
- * M�todos est�ticos PHP
- */
-function jsCommand($command){
-	$html = '<script type="text/javascript">'."\n";
-	$html.= "	$command;\n";
-	$html.= "</script>\n";
-	echo $html;
-}
-
-function jsAlert($txt){
-	jsCommand("alert('$txt')");
-}
-
-function jsRedir($url){
-	jsCommand("location.href='$url'");
-}
-
 
 /*----------------------------------------------------------------------------*/
 /* funcion que hace una inclusion automatica de las clases
@@ -164,13 +115,4 @@ function __autoload($class_name)
 		require_once($bajadas."models/".strtolower($class_name).".class.php");
 	}
 
-function redondear_dos_decimal($valor) { 
-   $float_redondeado=round($valor * 100) / 100; 
-   return $float_redondeado; 
-} 
-function convertir_fecha($fecha){
-    ereg( "([0-9]{1,2})/([0-9]{1,2})/([0-9]{2,4})", $fecha, $mifecha);
-    $lafecha=$mifecha[3]."-".$mifecha[2]."-".$mifecha[1];
-    return $lafecha;
-} 
 ?>

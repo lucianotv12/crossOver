@@ -42,12 +42,12 @@
         <form method="post" name="datos">
                 
             <table class="table table-striped table-bordered">
-              <tr style="background: gray; color: white; font-size: 14px; font-family: arial; font-weight: normal;">
+              <tr style="background: gray; color: white; font-size: 13px; font-family: arial; font-weight: normal;">
                 <th>POS
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','pos','ASC')"><img  src="<?= IMGS?>prev.png"  border="0"  ></a>
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','pos','DESC')"><img  src="<?= IMGS?>next.png"  border="0" ></a>           
                 </th>
-                <th>tipo</th>
+                <th>TIPO</th>
                 <th>RAZ.SOCIAL
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','razon_social','ASC')"><img  src="<?= IMGS?>prev.png"  border="0"  ></a>
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','razon_social','DESC')"><img  src="<?= IMGS?>next.png"  border="0" ></a>           
@@ -64,11 +64,11 @@
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','merchandisers','ASC')"><img  src="<?= IMGS?>prev.png"  border="0"  ></a>
                     <a href="javaScript:ordenar_por('<?=$_GET["accion"]?>','merchandisers','DESC')"><img  src="<?= IMGS?>next.png"  border="0" ></a>
                 </th>
-                <th>CODIGOS </th>
+                <th>COD. </th>
                 <th>KM. </th>
-                <th>C.VENDEDORES </th>
-                <th>OBJ.ABRIL</th>
-                <th>OBJ.MAYO</th>
+                <th>VENDEDORES </th>
+                <th>OB.ABRIL</th>
+                <th>OB.MAYO</th>
                 <th>D. WEB</th>
 
               </tr>

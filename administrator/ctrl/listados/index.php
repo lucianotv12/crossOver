@@ -12,8 +12,12 @@ conectar_bd();
 
 #$template = new Template();
 
-if(!isset($_GET["accion"]))$accion= "list";
-else $accion = $_GET["accion"];
+if(!isset($_GET["accion"])):
+	$accion= "list";
+	$_GET["accion"] ="list";
+else:
+ $accion = $_GET["accion"];
+endif;
 $detalle = false;
 
 switch($accion):
